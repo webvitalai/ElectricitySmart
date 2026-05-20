@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  LightningChargeFill,
   TelephoneFill,
   EnvelopeFill,
   GeoAltFill,
@@ -82,10 +81,10 @@ const Footer = () => {
           border-radius: 34px;
 
           background: rgba(255, 255, 255, 0.06);
-
           border: 1px solid rgba(255, 255, 255, 0.12);
 
           backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
 
           display: flex;
           align-items: center;
@@ -113,18 +112,13 @@ const Footer = () => {
           align-items: center;
           gap: 10px;
           text-decoration: none;
-
           color: white;
-
           background: linear-gradient(135deg, #ef4444, #38bdf8);
-
           padding: 17px 24px;
           border-radius: 18px;
           font-weight: 950;
           white-space: nowrap;
-
           box-shadow: 0 18px 45px rgba(14,165,233,0.25);
-
           transition: 0.35s ease;
         }
 
@@ -142,42 +136,51 @@ const Footer = () => {
         .footer-brand {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 7px;
           text-decoration: none;
           color: white;
           margin-bottom: 22px;
+          max-width: 100%;
         }
 
-        .footer-logo-icon {
-          width: 52px;
-          height: 52px;
-          border-radius: 18px;
-
-          background: linear-gradient(135deg, #ef4444, #38bdf8);
-
+        .footer-logo-img-wrap {
+          width: 82px;
+          height: 70px;
+          min-width: 82px;
           display: flex;
           align-items: center;
           justify-content: center;
-
-          box-shadow: 0 18px 40px rgba(14,165,233,0.3);
-
-          position: relative;
-          animation: zapMove 2.7s infinite ease-in-out;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          overflow: visible;
+          flex-shrink: 0;
         }
 
-        .footer-logo-icon::after {
-          content: "";
-          position: absolute;
-          inset: -7px;
-          border-radius: 24px;
-
-          border: 1px solid rgba(56,189,248,0.45);
-
-          animation: footerRing 2s infinite ease-out;
+        .footer-logo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          filter:
+            brightness(1.08)
+            contrast(1.16)
+            saturate(1.12)
+            drop-shadow(0 5px 10px rgba(14, 165, 233, 0.26));
+          transition: 0.35s ease;
         }
 
-        .footer-logo-icon svg {
-          font-size: 27px;
+        .footer-brand:hover .footer-logo-img {
+          transform: scale(1.06);
+        }
+
+        .footer-brand-text {
+          margin-left: -3px;
+          min-width: 0;
         }
 
         .footer-brand strong {
@@ -186,6 +189,7 @@ const Footer = () => {
           font-weight: 950;
           letter-spacing: -0.04em;
           line-height: 1;
+          white-space: nowrap;
         }
 
         .footer-brand span {
@@ -193,11 +197,10 @@ const Footer = () => {
           font-size: 10px;
           text-transform: uppercase;
           letter-spacing: 0.22em;
-
           color: #7dd3fc;
-
           font-weight: 900;
           margin-top: 5px;
+          white-space: nowrap;
         }
 
         .footer-about {
@@ -217,18 +220,13 @@ const Footer = () => {
           width: 44px;
           height: 44px;
           border-radius: 15px;
-
           background: rgba(255,255,255,0.06);
-
           color: white;
-
           display: flex;
           align-items: center;
           justify-content: center;
           text-decoration: none;
-
           border: 1px solid rgba(255,255,255,0.08);
-
           transition: 0.35s ease;
         }
 
@@ -252,7 +250,6 @@ const Footer = () => {
           width: 34px;
           height: 3px;
           border-radius: 20px;
-
           background: linear-gradient(90deg, #ef4444, #38bdf8);
         }
 
@@ -328,11 +325,8 @@ const Footer = () => {
           margin-top: 20px;
           padding: 18px;
           border-radius: 22px;
-
           background: rgba(56,189,248,0.12);
-
           border: 1px solid rgba(56,189,248,0.18);
-
           display: flex;
           align-items: center;
           gap: 12px;
@@ -358,16 +352,17 @@ const Footer = () => {
           z-index: 2;
           margin-top: 55px;
           padding-top: 24px;
-
           border-top: 1px solid rgba(255,255,255,0.08);
-
           display: flex;
           align-items: center;
           justify-content: space-between;
           gap: 18px;
-
           color: #94a3b8;
           font-size: 13px;
+        }
+
+        .footer-bottom p {
+          margin: 0;
         }
 
         .footer-bottom-links {
@@ -415,28 +410,6 @@ const Footer = () => {
           }
         }
 
-        @keyframes zapMove {
-          0%, 100% {
-            transform: rotate(0deg) scale(1);
-          }
-
-          50% {
-            transform: rotate(-8deg) scale(1.08);
-          }
-        }
-
-        @keyframes footerRing {
-          0% {
-            opacity: 0.8;
-            transform: scale(0.85);
-          }
-
-          100% {
-            opacity: 0;
-            transform: scale(1.35);
-          }
-        }
-
         @keyframes marqueeMove {
           from {
             transform: translateX(0);
@@ -455,6 +428,12 @@ const Footer = () => {
 
           .footer-grid {
             grid-template-columns: 1fr 1fr;
+          }
+
+          .footer-logo-img-wrap {
+            width: 76px;
+            height: 66px;
+            min-width: 76px;
           }
         }
 
@@ -478,6 +457,25 @@ const Footer = () => {
             gap: 32px;
           }
 
+          .footer-logo-img-wrap {
+            width: 66px;
+            height: 58px;
+            min-width: 66px;
+          }
+
+          .footer-brand {
+            gap: 5px;
+          }
+
+          .footer-brand strong {
+            font-size: 19px;
+          }
+
+          .footer-brand span {
+            font-size: 9px;
+            letter-spacing: 0.15em;
+          }
+
           .footer-bottom {
             flex-direction: column;
             align-items: flex-start;
@@ -485,6 +483,22 @@ const Footer = () => {
 
           .footer-marquee span {
             font-size: 56px;
+          }
+        }
+
+        @media (max-width: 390px) {
+          .footer-logo-img-wrap {
+            width: 58px;
+            height: 52px;
+            min-width: 58px;
+          }
+
+          .footer-brand strong {
+            font-size: 17px;
+          }
+
+          .footer-brand span {
+            display: none;
           }
         }
       `}</style>
@@ -495,7 +509,8 @@ const Footer = () => {
 
         <div className="footer-marquee">
           <span>
-            ELECTRICITY SMART • LONDON ELECTRICIANS • EMERGENCY SERVICE • STAR-ELECTRIC •
+            ELECTRICITY SMART • LONDON ELECTRICIANS • EMERGENCY SERVICE •
+            STAR-ELECTRIC •
           </span>
         </div>
 
@@ -519,11 +534,15 @@ const Footer = () => {
           <div className="footer-grid">
             <div className="footer-col">
               <a href="/" className="footer-brand">
-                <div className="footer-logo-icon">
-                  <LightningChargeFill />
+                <div className="footer-logo-img-wrap">
+                  <img
+                    src="/Images/Logo.png"
+                    alt="Electricity Smart Services London Logo"
+                    className="footer-logo-img"
+                  />
                 </div>
 
-                <div>
+                <div className="footer-brand-text">
                   <strong>ELECTRICITY SMART</strong>
                   <span>Services London</span>
                 </div>
@@ -536,15 +555,15 @@ const Footer = () => {
               </p>
 
               <div className="footer-socials">
-                <a href="#">
+                <a href="#" aria-label="Facebook">
                   <Facebook />
                 </a>
 
-                <a href="#">
+                <a href="#" aria-label="Instagram">
                   <Instagram />
                 </a>
 
-                <a href="#">
+                <a href="#" aria-label="Twitter X">
                   <TwitterX />
                 </a>
 
@@ -552,6 +571,7 @@ const Footer = () => {
                   href="https://wa.me/442072052003"
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="WhatsApp"
                 >
                   <Whatsapp />
                 </a>
@@ -629,12 +649,12 @@ const Footer = () => {
 
                 <div className="contact-item">
                   <TelephoneFill />
-                  <a href="tel:+442012345678">+44 20 7205 2003</a>
+                  <a href="tel:+442072052003">+44 20 7205 2003</a>
                 </div>
 
                 <div className="contact-item">
                   <EnvelopeFill />
-                  <a href="mailto:info@star-electric.co.uk">
+                  <a href="mailto:info@electricitysmart.co.uk">
                     info@electricitysmart.co.uk
                   </a>
                 </div>
@@ -652,7 +672,9 @@ const Footer = () => {
           </div>
 
           <div className="footer-bottom">
-            <p>© 2026 Electricity Smart Services London. All rights reserved.</p>
+            <p>
+              © 2026 Electricity Smart Services London. All rights reserved.
+            </p>
 
             <div className="footer-bottom-links">
               <a href="#">Privacy Policy</a>
